@@ -56,9 +56,10 @@ public class Controller {
             String winner = checkWinner();
             if(winner != null){
                 playerTurnLabel.setText(winner + " Wins!");
+                disableBoard();
             }else if(boardFull()){
                 playerTurnLabel.setText("Draw");
-                clearBoard();
+                disableBoard();
             }
         }
     }
@@ -70,6 +71,9 @@ public class Controller {
 
             if(!button1.getText().isEmpty() && button1.getText().equals(button2.getText()) &&
                     button2.getText().equals(button3.getText())){
+                button1.setStyle("-fx-background-color: green");
+                button2.setStyle("-fx-background-color: green");
+                button3.setStyle("-fx-background-color: green");
                 return button1.getText();
             }
         }
@@ -80,6 +84,9 @@ public class Controller {
             Button button3 = (Button) boardGrid.getChildren().get(j+6);
             if(!button1.getText().isEmpty() && button1.getText().equals(button2.getText()) &&
                     button2.getText().equals(button3.getText())){
+                button1.setStyle("-fx-background-color: green");
+                button2.setStyle("-fx-background-color: green");
+                button3.setStyle("-fx-background-color: green");
                 return button1.getText();
             }
         }
@@ -90,6 +97,9 @@ public class Controller {
 
         if(!button1.getText().isEmpty() && button1.getText().equals(button2.getText()) &&
                 button2.getText().equals(button3.getText())){
+            button1.setStyle("-fx-background-color: green");
+            button2.setStyle("-fx-background-color: green");
+            button3.setStyle("-fx-background-color: green");
             return button1.getText();
         }
 
@@ -99,6 +109,9 @@ public class Controller {
 
         if(!button4.getText().isEmpty() && button4.getText().equals(button5.getText()) &&
                 button5.getText().equals(button6.getText())){
+            button4.setStyle("-fx-background-color: green");
+            button5.setStyle("-fx-background-color: green");
+            button6.setStyle("-fx-background-color: green");
             return button4.getText();
         }
 
@@ -114,5 +127,13 @@ public class Controller {
             }
         }
         return true;
+    }
+    private void disableBoard(){
+        for(var node: boardGrid.getChildren()) {
+            if(node instanceof Button) {
+                Button button = (Button)node;
+                button.setDisable(true);
+            }
+        }
     }
 }
