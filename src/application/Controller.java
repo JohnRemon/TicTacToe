@@ -37,6 +37,7 @@ public class Controller {
             if(node instanceof Button) {
                 Button button = (Button)node;
                 button.setText("");
+                button.setStyle("");
                 button.setDisable(false);
             }
         }
@@ -77,14 +78,29 @@ public class Controller {
             Button button1 = (Button) boardGrid.getChildren().get(j);
             Button button2 = (Button) boardGrid.getChildren().get(j+3);
             Button button3 = (Button) boardGrid.getChildren().get(j+6);
-            System.out.println(button1+ " " + button2+ " " + button3);
-            System.out.println("j = " + j);
             if(!button1.getText().isEmpty() && button1.getText().equals(button2.getText()) &&
                     button2.getText().equals(button3.getText())){
                 return button1.getText();
             }
         }
 
+        Button button1 = (Button) boardGrid.getChildren().get(0);
+        Button button2 = (Button) boardGrid.getChildren().get(4);
+        Button button3 = (Button) boardGrid.getChildren().get(8);
+
+        if(!button1.getText().isEmpty() && button1.getText().equals(button2.getText()) &&
+                button2.getText().equals(button3.getText())){
+            return button1.getText();
+        }
+
+        Button button4 = (Button) boardGrid.getChildren().get(2);
+        Button button5 = (Button) boardGrid.getChildren().get(4);
+        Button button6 = (Button) boardGrid.getChildren().get(6);
+
+        if(!button4.getText().isEmpty() && button4.getText().equals(button5.getText()) &&
+                button5.getText().equals(button6.getText())){
+            return button4.getText();
+        }
 
         return null;
     }
