@@ -1,3 +1,3 @@
 Tic Tac Toe Game
 
-Run the Main file, having installed thel libraries of JavaFX
+Run the Main file, having installed the libraries of JavaFX
