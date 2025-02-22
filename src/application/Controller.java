@@ -2,6 +2,7 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -54,7 +55,6 @@ public class Controller {
             String winner = checkWinner();
             if(winner != null){
                 playerTurnLabel.setText(winner + " Wins!");
-                clearBoard();
             }else if(boardFull()){
                 playerTurnLabel.setText("Draw");
                 clearBoard();
@@ -77,7 +77,8 @@ public class Controller {
             Button button1 = (Button) boardGrid.getChildren().get(j);
             Button button2 = (Button) boardGrid.getChildren().get(j+3);
             Button button3 = (Button) boardGrid.getChildren().get(j+6);
-
+            System.out.println(button1+ " " + button2+ " " + button3);
+            System.out.println("j = " + j);
             if(!button1.getText().isEmpty() && button1.getText().equals(button2.getText()) &&
                     button2.getText().equals(button3.getText())){
                 return button1.getText();
