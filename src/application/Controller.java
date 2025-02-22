@@ -34,4 +34,18 @@ public class Controller {
     private void clearBoard() {
         System.out.println("clear board");
     }
+    public void handleButtonPress(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        if(button.getText().isEmpty()){
+            if(isXTurn) {
+                playerTurnLabel.setText("Player O's Turn");
+                button.setText("X");
+            }else{
+                playerTurnLabel.setText("Player X's Turn");
+                button.setText("O");
+            }
+            isXTurn = !isXTurn;
+        }
+
+    }
 }
