@@ -51,12 +51,51 @@ public class Controller {
                 button.setText("O");
             }
             isXTurn = !isXTurn;
-            checkWinner();
+            String winner = checkWinner();
+            if(winner != null){
+                playerTurnLabel.setText(winner + " Wins!");
+                clearBoard();
+            }else if(boardFull()){
+                playerTurnLabel.setText("Draw");
+                clearBoard();
+            }
         }
     }
-    private void checkWinner(){
-        for(int i = 0; i < boardGrid.getChildren().size(); i++){
+    private String checkWinner(){
+        for(int i = 0; i < 3; i++){
+            Button button1 = (Button) boardGrid.getChildren().get(i*3);
+            Button button2 = (Button) boardGrid.getChildren().get(i*3+1);
+            Button button3 = (Button) boardGrid.getChildren().get(i*3+2);
 
+            if(!button1.getText().isEmpty() && button1.getText().equals(button2.getText()) &&
+                    button2.getText().equals(button3.getText())){
+                return button1.getText();
+            }
         }
+
+        for(int j = 0; j < 3; j++){
+            Button button1 = (Button) boardGrid.getChildren().get(j);
+            Button button2 = (Button) boardGrid.getChildren().get(j+3);
+            Button button3 = (Button) boardGrid.getChildren().get(j+6);
+
+            if(!button1.getText().isEmpty() && button1.getText().equals(button2.getText()) &&
+                    button2.getText().equals(button3.getText())){
+                return button1.getText();
+            }
+        }
+
+
+        return null;
+    }
+    private boolean boardFull(){
+        for(var node: boardGrid.getChildren()) {
+            if(node instanceof Button) {
+                Button button = (Button)node;
+                if(button.getText().isEmpty()){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
