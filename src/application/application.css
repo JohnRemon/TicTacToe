@@ -1,0 +1,10 @@
+.button:disabled{
+    -fx-opacity: 1.0;
+}
+.button{
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+#startButton{
+    -fx-font-size: 14;
+}

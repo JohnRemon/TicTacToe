@@ -18,6 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/application/main.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("TicTacToe");
         primaryStage.show();
