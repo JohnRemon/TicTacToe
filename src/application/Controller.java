@@ -32,7 +32,13 @@ public class Controller {
         clearBoard();
     }
     private void clearBoard() {
-        System.out.println("clear board");
+        for(var node: boardGrid.getChildren()) {
+            if(node instanceof Button) {
+                Button button = (Button)node;
+                button.setText("");
+                button.setDisable(false);
+            }
+        }
     }
     public void handleButtonPress(ActionEvent event) {
         Button button = (Button) event.getSource();
@@ -45,7 +51,12 @@ public class Controller {
                 button.setText("O");
             }
             isXTurn = !isXTurn;
+            checkWinner();
         }
+    }
+    private void checkWinner(){
+        for(int i = 0; i < boardGrid.getChildren().size(); i++){
 
+        }
     }
 }
